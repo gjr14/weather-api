@@ -14,7 +14,7 @@ const renderWeather = function (data) {
     	<div class="weather-box">
             <p>${data.location.localtime}</p>
 			<h2>${data.location.name}</h2>
-		    <h3>${data.location.region}</h3>
+		    <h3>${data.location.region}, ${data.location.country}</h3>
 			<p>${data.current.condition.text}</p>
             <img
                 src="${data.current.condition.icon}"
@@ -76,6 +76,7 @@ async function addNewPlace() {
 		);
 		if (!res.ok) throw new Error("Location not found");
 		const data = await res.json();
+		console.log(data);
 		renderWeather(data);
 		addNewPlaceInput.value = "";
 	} catch (err) {
