@@ -1,4 +1,6 @@
 const addNewPlaceBtn = document.querySelector("#add-new-place-btn");
+const addNewPlaceInput = document.querySelector("#add-new-place-input");
+
 
 window.addEventListener("load", function () {
 	whereAmI();
@@ -55,8 +57,17 @@ document.addEventListener("click", function (e) {
 });
 
 // ADD NEW PLACE TO THE WEATHER APP
-addNewPlaceBtn.addEventListener("click", async function () {
-	const addNewPlaceInput = document.querySelector("#add-new-place-input");
+addNewPlaceBtn.addEventListener("click", addNewPlace);
+
+addNewPlaceInput.addEventListener("keydown", (e) => 
+	{
+		if (e.key === "Enter") {
+			addNewPlace();
+		}
+	}
+)
+
+async function addNewPlace() {
 	try {
 		const newPlace = addNewPlaceInput.value;
 		if (!newPlace) throw new Error("Type in a city");
@@ -70,4 +81,5 @@ addNewPlaceBtn.addEventListener("click", async function () {
 	} catch (err) {
 		alert(err);
 	}
-});
+}
+
