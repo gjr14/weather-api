@@ -76,7 +76,6 @@ async function addNewPlace() {
 		);
 		if (!res.ok) throw new Error("Location not found");
 		const data = await res.json();
-		console.log(data);
 		renderWeather(data);
 		addNewPlaceInput.value = "";
 	} catch (err) {
